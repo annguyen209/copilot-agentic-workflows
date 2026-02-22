@@ -1,3 +1,9 @@
+---
+name: testing-qa
+description: "Testing & QA: comprehensive guidance for unit, integration, and end-to-end testing, TDD, mocking, and testing infrastructure."
+license: "See repository LICENSE"
+---
+
 # Testing & QA Practices
 
 ## Overview

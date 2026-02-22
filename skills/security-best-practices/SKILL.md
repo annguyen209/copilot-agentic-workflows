@@ -1,3 +1,9 @@
+---
+name: security-best-practices
+description: "Security Best Practices: guidelines for secure coding, authentication, authorization, and defense-in-depth against common threats."
+license: "See repository LICENSE"
+---
+
 # Security Best Practices
 
 ## Overview

@@ -1,3 +1,9 @@
+---
+name: database-optimization
+description: "Database Optimization: indexing, query tuning, schema design, and scaling strategies for high-performance databases."
+license: "See repository LICENSE"
+---
+
 # Database Optimization
 
 ## Overview

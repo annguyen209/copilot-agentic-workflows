@@ -1,3 +1,9 @@
+---
+name: frontend-architecture
+description: "Frontend Architecture & Performance: patterns and techniques for building scalable, maintainable, and high-performance frontends."
+license: "See repository LICENSE"
+---
+
 # Frontend Architecture & Performance
 
 ## Overview

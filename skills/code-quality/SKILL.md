@@ -1,3 +1,9 @@
+---
+name: code-quality
+description: "Code Quality & Clean Code: SOLID principles, refactoring techniques, design patterns, and maintainability guidance."
+license: "See repository LICENSE"
+---
+
 # Code Quality & Clean Code
 
 ## Overview

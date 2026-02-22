@@ -1,3 +1,9 @@
+---
+name: typescript-patterns
+description: "TypeScript Patterns: advanced type-system guidance, design patterns, and best practices for writing maintainable, type-safe TypeScript applications."
+license: "See repository LICENSE"
+---
+
 # TypeScript Patterns
 
 ## Overview

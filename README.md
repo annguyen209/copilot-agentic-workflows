@@ -1,4 +1,5 @@
 # Copilot Agentic Workflow
+Backend, Frontend, TypeScript, JavaScript
 
 This repository contains an opinionated, production-oriented agentic workflow for GitHub Copilot / VS Code Agents.
 

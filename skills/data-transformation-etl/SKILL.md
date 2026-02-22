@@ -1,3 +1,9 @@
+---
+name: data-transformation-etl
+description: "Data Transformation & ETL: parsing, validation, pipeline design, and production-ready data processing patterns."
+license: "See repository LICENSE"
+---
+
 # Data Transformation & ETL
 
 ## Overview

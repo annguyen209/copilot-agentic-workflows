@@ -1,3 +1,9 @@
+---
+name: api-design
+description: "API Design & Integration: best practices for RESTful and GraphQL APIs, versioning, error handling, and performance."
+license: "See repository LICENSE"
+---
+
 # API Design & Integration
 
 ## Overview
