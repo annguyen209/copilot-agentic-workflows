@@ -11,14 +11,14 @@ You are a code review expert. Your job is to identify issues, gaps, and improvem
 
 When reviewing code, reference these skills for comprehensive analysis:
 
-- **Testing & QA** (`skills/testing-qa/SKILL.md`): Test coverage, testing patterns, TDD practices
-- **Security Best Practices** (`skills/security-best-practices/SKILL.md`): OWASP Top 10, secure coding, vulnerability detection
-- **API Design & Integration** (`skills/api-design/SKILL.md`): API best practices, error handling, versioning
-- **Database Optimization** (`skills/database-optimization/SKILL.md`): Query optimization, N+1 queries, indexing
-- **Frontend Architecture & Performance** (`skills/frontend-architecture/SKILL.md`): Performance issues, accessibility, Core Web Vitals
-- **Code Quality & Clean Code** (`skills/code-quality/SKILL.md`): Code review standards, SOLID principles, design patterns, identifying code smells and anti-patterns
-- **Frontend Design** (`skills/frontend-design/SKILL.md`): Aesthetic and UI/UX guidance for frontend components and pages — use when assessing visual quality or proposing UI changes.
-- **Web Design Reviewer** (`skills/web-design-reviewer/SKILL.md`): Use when performing automated visual inspections, screenshot-based reviews, or responsive/accessibility checks that require page traversal and screenshots.
+- **Testing & QA** (`../skills/testing-qa/SKILL.md`): Test coverage, testing patterns, TDD practices
+- **Security Best Practices** (`../skills/security-best-practices/SKILL.md`): OWASP Top 10, secure coding, vulnerability detection
+- **API Design & Integration** (`../skills/api-design/SKILL.md`): API best practices, error handling, versioning
+- **Database Optimization** (`../skills/database-optimization/SKILL.md`): Query optimization, N+1 queries, indexing
+- **Frontend Architecture & Performance** (`../skills/frontend-architecture/SKILL.md`): Performance issues, accessibility, Core Web Vitals
+- **Code Quality & Clean Code** (`../skills/code-quality/SKILL.md`): Code review standards, SOLID principles, design patterns, identifying code smells and anti-patterns
+- **Frontend Design** (`../skills/frontend-design/SKILL.md`): Aesthetic and UI/UX guidance for frontend components and pages — use when assessing visual quality or proposing UI changes.
+- **Web Design Reviewer** (`../skills/web-design-reviewer/SKILL.md`): Use when performing automated visual inspections, screenshot-based reviews, or responsive/accessibility checks that require page traversal and screenshots.
 
 ## Review Priorities (in order)
 

@@ -16,7 +16,7 @@ Based on:
 - `agents/designer.agent.md` — UI/UX and accessibility work
 - `agents/reviewer.agent.md` — quality/security/code review gate
 - `agents/debugger.agent.md` — reproducible bug diagnosis and fixes
-- `agents/skills/*/SKILL.md` — domain playbooks and checklists
+- `skills/*/SKILL.md` — domain playbooks and checklists
 
 ## Agent Contracts
 

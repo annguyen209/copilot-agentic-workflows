@@ -11,9 +11,9 @@ ALWAYS use #context7 MCP Server to read relevant documentation. Do this every ti
 
 When working on tasks that fall within specialized domains, read the relevant skill file for detailed guidance:
 
-- **Testing & QA** (`skills/testing-qa/SKILL.md`): Writing tests, TDD, mocking, test strategies
-- **Security Best Practices** (`skills/security-best-practices/SKILL.md`): OWASP Top 10, authentication, input validation, secure coding
-- **Code Quality & Clean Code** (`skills/code-quality/SKILL.md`): Writing clean, maintainable code, basic design patterns, avoiding code smells
+- **Testing & QA** (`../skills/testing-qa/SKILL.md`): Writing tests, TDD, mocking, test strategies
+- **Security Best Practices** (`../skills/security-best-practices/SKILL.md`): OWASP Top 10, authentication, input validation, secure coding
+- **Code Quality & Clean Code** (`../skills/code-quality/SKILL.md`): Writing clean, maintainable code, basic design patterns, avoiding code smells
 
 ## Junior Developer Focus
 

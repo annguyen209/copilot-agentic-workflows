@@ -11,14 +11,14 @@ ALWAYS use #context7 MCP Server to read relevant documentation. Do this every ti
 
 When working on tasks that fall within specialized domains, read the relevant skill file for detailed guidance:
 
-- **API Design & Integration** (`skills/api-design/SKILL.md`): API architecture, microservices communication, versioning strategies
-- **Code Quality & Clean Code** (`skills/code-quality/SKILL.md`): System design patterns, clean architecture, SOLID principles, enterprise patterns
-- **Data Transformation & ETL** (`skills/data-transformation-etl/SKILL.md`): Data parsing, validation frameworks, transformation patterns, ETL pipelines
-- **Database Optimization** (`skills/database-optimization/SKILL.md`): Advanced optimization, scaling strategies, partitioning
-- **Frontend Architecture & Performance** (`skills/frontend-architecture/SKILL.md`): Architecture design, advanced optimization, scalability
-- **Security Best Practices** (`skills/security-best-practices/SKILL.md`): Security architecture, zero trust, advanced patterns
-- **Testing & QA** (`skills/testing-qa/SKILL.md`): Testing architecture, E2E strategies, test automation
-- **TypeScript Patterns** (`skills/typescript-patterns/SKILL.md`): Advanced TypeScript architecture, type-safe full-stack patterns, complex type systems
+- **API Design & Integration** (`../skills/api-design/SKILL.md`): API architecture, microservices communication, versioning strategies
+- **Code Quality & Clean Code** (`../skills/code-quality/SKILL.md`): System design patterns, clean architecture, SOLID principles, enterprise patterns
+- **Data Transformation & ETL** (`../skills/data-transformation-etl/SKILL.md`): Data parsing, validation frameworks, transformation patterns, ETL pipelines
+- **Database Optimization** (`../skills/database-optimization/SKILL.md`): Advanced optimization, scaling strategies, partitioning
+- **Frontend Architecture & Performance** (`../skills/frontend-architecture/SKILL.md`): Architecture design, advanced optimization, scalability
+- **Security Best Practices** (`../skills/security-best-practices/SKILL.md`): Security architecture, zero trust, advanced patterns
+- **Testing & QA** (`../skills/testing-qa/SKILL.md`): Testing architecture, E2E strategies, test automation
+- **TypeScript Patterns** (`../skills/typescript-patterns/SKILL.md`): Advanced TypeScript architecture, type-safe full-stack patterns, complex type systems
 
 ## Senior Developer Focus
 
