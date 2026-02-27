@@ -18,6 +18,9 @@ Based on:
 - `agents/coder-sr.agent.md` — moderate/complex code tasks
 - `agents/designer.agent.md` — UI/UX and accessibility work
 - `agents/reviewer.agent.md` — quality/security/code review gate
+- `agents/multi-reviewer.agent.md` — multi-model parallel review with consensus scoring
+- `agents/reviewer-gpt.agent.md` — review sub-agent (GPT-5.2-Codex), used by MultiReviewer
+- `agents/reviewer-gemini.agent.md` — review sub-agent (Gemini 3 Pro), used by MultiReviewer
 - `agents/debugger.agent.md` — reproducible bug diagnosis and fixes
 - `skills/*/SKILL.md` — domain playbooks and checklists
 
@@ -29,14 +32,14 @@ Based on:
 - Must not implement code directly.
 - Must start with Planner clarification gate.
 - Must build phased execution from file overlap/dependencies.
-- Must run Reviewer before completion.
+- Must run Reviewer (or MultiReviewer for complex changes) before completion.
 - Must invoke Debugger only for concrete reproducible failures.
 
 ### Planner
 
 - Dual role: clarification gate (Phase A) and planning (Phase B).
 - Must not produce a plan until clarification is complete.
-- Clarification completion signal: `Clarification complete. Proceeding to planning.`
+- Uses `vscode/askQuestions` to natively prompt the user for clarification without interrupting the run.
 - Must provide step-by-step plan with affected files, dependencies, risks, and open questions.
 - Must not write code.
 
@@ -70,6 +73,14 @@ Based on:
 - Must follow reproduce -> root cause -> minimal fix -> verification flow.
 - Returns control to Orchestrator/Reviewer after fix verification.
 
+### MultiReviewer
+
+- Runs the same review against GPT-5.3-Codex, Gemini 3 Pro, and Claude Opus 4.6 in parallel.
+- Consolidates findings with consensus scoring (3/3, 2/3, 1/3).
+- Used for complex, security-sensitive, or architecture-critical changes.
+- Orchestrator decides when to use MultiReviewer vs. standard Reviewer.
+- Sub-agents (ReviewerGPT, ReviewerGemini) are never called directly.
+
 ## Current Agent Workflow
 
 1. Orchestrator starts with Planner as a clarification gate.
@@ -79,7 +90,7 @@ Based on:
 3. If Planner already returned a complete plan, Orchestrator proceeds; otherwise Orchestrator requests the plan from Planner.
 4. Orchestrator splits plan into phases by file overlap and dependencies.
 5. Orchestrator executes phase tasks via `CoderJr` / `CoderSr` / `Designer` (parallel only for non-overlapping files).
-6. Orchestrator runs `Reviewer`.
+6. Orchestrator runs `Reviewer` (or `MultiReviewer` for complex/critical changes).
 7. If Reviewer/run output shows a concrete reproducible failure, Orchestrator calls `Debugger`, then routes back to `Reviewer`.
 8. Orchestrator reports final result to the user.
 
@@ -88,16 +99,10 @@ Based on:
 ```mermaid
 flowchart TD
     U["User Request"] --> O["Orchestrator"]
-    O --> P0["Planner: Clarification Gate"]
-    P0 --> Q{"Clarification complete?"}
-    Q -- "No" --> CQ["Clarifying Questions"]
-    CQ --> U
-    U --> O
-    O --> P0
-    Q -- "Yes" --> HP{"Plan already present?"}
-    HP -- "No" --> P1["Planner: Implementation Plan"]
-    HP -- "Yes" --> PH["Parse Into Phases"]
-    P1 --> PH["Parse Into Phases"]
+    O --> P0["Planner: Clarification & Planning"]
+    P0 -->|"vscode/askQuestions"| U
+    U -->|"answers"| P0
+    P0 --> PH["Parse Into Phases"]
     PH --> WT{"Overlapping files in parallel tasks?"}
     WT -- "Yes" --> WTC["Create Git Worktrees"]
     WTC --> EX["Execute Phases via CoderJr/CoderSr/Designer"]
@@ -169,6 +174,7 @@ flowchart TD
   - Database optimization
   - Frontend architecture and performance
   - Git worktree (conditional parallel execution)
+  - Multi-model review (consensus-based code review)
   - Security best practices
   - Testing and QA
   - TypeScript patterns
