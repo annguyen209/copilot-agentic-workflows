@@ -81,6 +81,18 @@ Based on:
 - Orchestrator decides when to use MultiReviewer vs. standard Reviewer.
 - Sub-agents (ReviewerGPT, ReviewerGemini) are never called directly.
 
+```mermaid
+flowchart TD
+    O["Orchestrator"]
+    O -->|"parallel"| R1["ReviewerGPT\n(GPT-5.3-Codex)"]
+    O -->|"parallel"| R2["ReviewerGemini\n(Gemini 3 Pro)"]
+    O -->|"parallel"| R3["Reviewer\n(Claude Opus 4.6)"]
+    R1 -->|"findings"| MR["MultiReviewer\n(Consolidator)"]
+    R2 -->|"findings"| MR
+    R3 -->|"findings"| MR
+    MR --> OUT["Unified Report\n3/3, 2/3, 1/3 scoring"]
+```
+
 ## Current Agent Workflow
 
 1. Orchestrator starts with Planner as a clarification gate.
