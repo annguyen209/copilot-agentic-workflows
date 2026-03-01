@@ -72,9 +72,11 @@ Build phases from Planner file assignments:
 For each phase:
 
 1. Use CoderJr first for simple work; escalate to CoderSr when complexity/risk increases.
-2. Start all independent tasks in one parallel block.
-3. Wait for full phase completion before next phase.
-4. Report completion and risks after each phase.
+2. Delegate implementation in write-capable mode only (edit tools must be available).
+3. Start all independent tasks in one parallel block.
+4. Wait for full phase completion before next phase.
+5. If executor reports `EDIT_TOOLS_UNAVAILABLE`, immediately re-delegate same task in proper write-capable mode (do not accept code-dump fallback).
+6. Report completion and risks after each phase.
 
 ### Step 5: Review Before Finalizing
 
