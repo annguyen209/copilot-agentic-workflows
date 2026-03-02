@@ -119,18 +119,6 @@ project_root/
 - Orchestrator decides when to use MultiReviewer vs. standard Reviewer.
 - Sub-agents (ReviewerGPT, ReviewerGemini) are never called directly by the user; they are invoked only as inputs to the MultiReviewer flow.
 
-```mermaid
-flowchart TD
-    O["Orchestrator"]
-    O -->|"parallel"| R1["ReviewerGPT<br/>(GPT-5.3-Codex)"]
-    O -->|"parallel"| R2["ReviewerGemini<br/>(Gemini 3 Pro)"]
-    O -->|"parallel"| R3["Reviewer<br/>(Claude Sonnet 4.6)"]
-    R1 -->|"findings"| MR["MultiReviewer<br/>(Consolidator)"]
-    R2 -->|"findings"| MR
-    R3 -->|"findings"| MR
-    MR --> OUT["Unified Report<br/>3/3, 2/3, 1/3 scoring"]
-```
-
 ## Current Agent Workflow
 
 1. **Step 0: Clarification Gate** — Orchestrator starts with Planner and proceeds only when Planner returns `Clarification Status: COMPLETE`.
@@ -143,28 +131,77 @@ flowchart TD
 8. **Step 7: Verify and Report** — Final verification of the integrated result.
 9. **Step 8: Transactional Knowledge Extraction** — Lessons are saved to `.agent-memory/` with a **Completion Gate** for verification; approved skill updates are delegated and persisted consistently.
 
-## Mermaid Diagram
+## Diagrams
+
+### Swarm Orchestration
 
 ```mermaid
 flowchart TD
-    U["User Request"] --> O["Orchestrator"]
-    O --> P0["Step 0: Clarification & Step 2: Planning"]
-    P0 -->|"vscode/askQuestions"| U
-    U -->|"answers"| P0
-    O --> B["Step 1: Brainstorming (Mesh)"]
-    B -->|"/.tmp/brainstorm-[hiveID].md"| P0
-    P0 --> PH["Step 3: Parse Into Phases"]
-    PH --> WT{"Multi-Hive needed? (any 2/4 criteria)"}
-    WT -- "Yes" --> SUB["Create Worktrees & Spawn Sub-Orchestrators"]
-    SUB --> RV
-    WT -- "No" --> EX["Step 4: Execute via Specialists"]
-    EX --> RV["Step 5: Reviewer / MultiReviewer"]
-    RV --> F{"Bug Found?"}
-    F -- "Yes" --> DB["Step 6: Debugger"]
-    DB --> RV
-    F -- "No" --> DONE["Step 7: Verify & Report"]
-    DONE --> MEM["Step 8: Knowledge Extraction"]
-    MEM -->|".agent-memory/"| END["Task Complete"]
+    U["User"] --> O["Orchestrator"]
+
+    O --> P["Step 0: Planner<br/>(Clarification Gate)"]
+    P -->|"Clarification Status: COMPLETE"| O
+
+    O --> B{"Step 1: Brainstorm?<br/>(any 2/4)"}
+    B -- "Yes" --> MESH["Designer + CoderSr (parallel)<br/>/.tmp/brainstorm-[hiveID].md"]
+    MESH --> PM["Planner mediates<br/>+ extracts decisions"]
+    PM --> O
+    B -- "No" --> O
+
+    O --> PL["Step 2: Get Plan<br/>(Planner)"]
+    PL --> PH["Step 3: Parse into phases<br/>(parallel vs sequential)"]
+
+    PH --> EXE["Step 4: Execute phases<br/>CoderJr → CoderSr escalation"]
+    EXE --> RV{"Step 5: Review mode?"}
+    RV -- "Single" --> R1["Reviewer"]
+    RV -- "Multi" --> R3["ReviewerGPT + ReviewerGemini + Reviewer<br/>(parallel)"]
+    R3 --> MR["MultiReviewer<br/>(consolidate)"]
+    R1 --> OUTR["Findings"]
+    MR --> OUTR
+
+    OUTR --> BUG{"Step 6: Repro bug?"}
+    BUG -- "Yes" --> DBG["Debugger"]
+    DBG --> RV
+    BUG -- "No" --> VER["Step 7: Verify & Report"]
+
+    VER --> MEM{"Step 8: Memory triggers?"}
+    MEM -- "Yes" --> MJ["CoderJr updates .agent-memory/<br/>via memory-management + read-back"]
+    MJ --> DONE["Done"]
+    MEM -- "No" --> DONE
+```
+
+### Multi-Model Review (MultiReviewer)
+
+```mermaid
+flowchart TD
+    O["Orchestrator"]
+    O -->|"parallel"| R1["ReviewerGPT<br/>(GPT-5.3-Codex)"]
+    O -->|"parallel"| R2["ReviewerGemini<br/>(Gemini 3 Pro)"]
+    O -->|"parallel"| R3["Reviewer<br/>(Claude Sonnet 4.6)"]
+    R1 -->|"findings"| MR["MultiReviewer<br/>(Consolidator)"]
+    R2 -->|"findings"| MR
+    R3 -->|"findings"| MR
+    MR --> OUT["Unified Report<br/>3/3, 2/3, 1/3 scoring"]
+```
+
+### Memory Flow (.agent-memory)
+
+```mermaid
+flowchart TD
+    START["Any non-trivial task"] --> READ["Read-First<br/>Read .agent-memory/project_decisions.md<br/>Read .agent-memory/error_patterns.md<br/>(archive only if needed)"]
+
+    READ --> WORK["Plan / Audit / Implement / Review / Verify"]
+
+    WORK --> CAND{"Coder returned<br/>Memory Candidate?"}
+    CAND -- "Yes" --> EVAL["Orchestrator evaluates<br/>against Step 8 triggers"]
+    CAND -- "No" --> TRIG{"Any Step 8 trigger true?"}
+
+    EVAL --> TRIG
+
+    TRIG -- "No" --> SKIP["No-op<br/>(do not write memory)"]
+    TRIG -- "Yes" --> AUTH["Orchestrator delegates CoderJr<br/>ALLOW_MEMORY_UPDATE=true<br/>choose target files"]
+    AUTH --> TX["CoderJr writes via<br/>memory-management skill<br/>+ read-back verification"]
+    TX --> OK["Memory Transaction Successful"]
 ```
 
 ## Escalation Rules

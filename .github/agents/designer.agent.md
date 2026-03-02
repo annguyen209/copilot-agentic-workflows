@@ -13,7 +13,6 @@ tools:
     "edit",
     "search",
     "web",
-    "memory",
     "todo",
   ]
 ---
