@@ -45,3 +45,76 @@ If using Navigation3 KMP for architecture:
 If using Koin:
 
 - Prefer `single` and `factory` instead of `bind` with generic provider/singleton blocks for clearer syntax and safety.
+
+## 4. Project Structure & Layering
+
+Prefer a clear 3-layer layout and keep boundaries strict:
+
+- `data/`: implementations (local DB, remote APIs, repository impls)
+- `domain/`: pure business logic (models, repository interfaces, use cases)
+- `ui/`: Compose screens, reusable components, theme
+- `di/`: DI wiring only (no business logic)
+
+Rule: UI depends on domain, domain depends on nothing, data depends on domain (interfaces).
+
+## 5. Coroutines, Flow, and State
+
+1. **UI state**:
+   - Use `MutableStateFlow` internally and expose `StateFlow` via `asStateFlow()`.
+   - Update state via `update { it.copy(...) }` to keep changes atomic.
+
+Example (micro):
+
+```kotlin
+private val _state = MutableStateFlow(ViewState())
+val state: StateFlow<ViewState> = _state.asStateFlow()
+_state.update { it.copy(isLoading = true) }
+```
+2. **Long-running streams**:
+   - Use `flowOn(Dispatchers.IO)` for data layer work.
+   - Prefer injecting a `CoroutineDispatcher` for testability.
+3. **Error handling**:
+   - Catch at the right boundary (usually data/usecase) and surface a user-safe error state.
+
+## 6. Result Modeling (Optional)
+
+For operations that can be loading/success/error, prefer a sealed result type over nullable juggling.
+
+Rule: keep it small (`Loading`, `Success(data)`, `Error(exception)`), and map/transform explicitly.
+
+## 7. Testing (Unit-first)
+
+Recommended stack (when it fits the repo):
+
+- `kotlinx-coroutines-test` for deterministic coroutine tests
+- `MockK` for mocking
+- `Turbine` for testing `Flow`/`StateFlow` emissions
+
+Rules:
+
+1. Tests must be deterministic (no real network, no timing races).
+2. Prefer injecting dispatchers and using test dispatchers.
+3. For flows: assert emission order and terminal states, not implementation details.
+
+Example (micro):
+
+```kotlin
+@Test fun emitsLoadingThenData() = runTest {
+  // collect state/flow and assert emissions (use Turbine if available)
+}
+```
+
+## 8. Lint + CI (Keep It Boring)
+
+1. Run static checks in CI:
+   - detekt (complexity/style)
+   - ktlint (formatting)
+   - unit tests
+2. Keep thresholds explicit (e.g., long method/parameter limits) and fail CI on violations.
+3. If the repo uses GitHub Actions, keep Android CI minimal:
+   - checkout
+   - JDK setup
+   - Gradle cache
+   - detekt/ktlint
+   - unit tests
+   - assemble (optional)

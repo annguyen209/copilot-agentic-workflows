@@ -45,6 +45,21 @@ If delegated to work in a **git worktree** (Orchestrator will specify the worktr
 3. Do NOT output full-file replacements or multi-file code dumps as a fallback.
 4. Wait for Orchestrator to re-run delegation in write-capable mode.
 
+## Tool Preflight (When Requested)
+
+If the Orchestrator delegates a **Tool Preflight**:
+
+1. Do NOT read repo files or skills.
+2. Respond with exactly one line: `EDIT_OK` or `EDIT_TOOLS_UNAVAILABLE`.
+
+## Terminal Preflight (When Requested)
+
+If the Orchestrator delegates a **Terminal Preflight**:
+
+1. Do NOT read repo files or skills.
+2. If you can run a trivial command, do so (e.g., `pwd`) and respond with exactly one line: `TERMINAL_OK`.
+3. If you cannot run commands (no terminal tools), respond with exactly one line: `TERMINAL_UNAVAILABLE`.
+
 ## Memory Boundary (Mandatory)
 
 1. Do NOT use any implicit/chat "memory" feature to store project context.
