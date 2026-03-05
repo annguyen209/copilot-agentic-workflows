@@ -138,6 +138,9 @@ Any accessibility improvements or remaining concerns.
 
 List any assumptions made, or state “None”.
 
+Hard rule: do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>` (one line).
+
 ---
 
 ## Interaction with Orchestrators

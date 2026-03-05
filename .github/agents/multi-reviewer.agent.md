@@ -140,3 +140,5 @@ When models disagree:
 7. **Preserve nuance** — don't collapse different observations into one if they're distinct
 8. **Final call is yours** — when models disagree, you make the judgment call
 9. **Input completeness is mandatory** — if any reviewer segment is missing, return `INCOMPLETE INPUT` and request full 3-model payload
+10. **Do not end silently** — if you cannot produce the final report for any reason, output exactly:
+`INCOMPLETE: <short reason>`

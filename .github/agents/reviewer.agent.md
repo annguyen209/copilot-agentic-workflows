@@ -24,3 +24,6 @@ Hard requirements:
 2. Include concrete file/line references for issues.
 3. Prioritize correctness, security, and regressions over style preference.
 4. If this run is single-review mode, keep the same `## Findings` format for consistency with multi-review mode.
+
+Hard rule: do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>`

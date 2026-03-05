@@ -23,3 +23,6 @@ Hard requirements:
 1. Produce output in the exact `## Findings` format defined in `review-core`.
 2. Include concrete file/line references for issues.
 3. Prioritize correctness, security, and regressions over style preference.
+
+Hard rule: do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>`

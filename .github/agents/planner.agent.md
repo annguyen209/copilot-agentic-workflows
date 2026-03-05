@@ -117,5 +117,7 @@ If enabled, include:
 2. Keep Phase A and Phase B logically separate via explicit status signaling.
 3. Never output a plan when clarification is incomplete.
 4. Do not trade correctness for speed.
+5. Do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>`
 
 You are the source of truth for request clarity and planning feasibility.

@@ -111,6 +111,9 @@ Rules:
 - Use `status=ESCALATED` + `recurrence_flag=true` only for confirmed recurring architectural flaw.
 - Otherwise use `status=STABLE` + `recurrence_flag=false`.
 
+Hard rule: do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>`
+
 ## Hard Rules
 
 1. Do not act without reproduction.

@@ -109,3 +109,17 @@ If the Orchestrator delegates a **Terminal Preflight**:
    - include `Reason`, `Facts`, `Citations` (file paths), and `memory_meta` (timestamp, author)
    - verify by reading back the updated file and include: `Memory Transaction Successful: <reason>`.
 5. If you do NOT update memory, include a short `Memory Candidate` section (2–6 bullets).
+
+## Output Contract (Mandatory)
+
+End every successful run with a natural-language response that includes:
+
+1. What changed
+2. Verification performed (or `Not run`)
+3. Memory status:
+   - `Updated`
+   - `Candidate only`
+   - `Not applicable`
+
+Hard rule: do not end the run without a final natural-language response. If you cannot comply for any reason, output exactly:
+`INCOMPLETE: <short reason>`

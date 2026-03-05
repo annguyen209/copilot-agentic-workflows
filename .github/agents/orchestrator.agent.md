@@ -82,6 +82,17 @@ When any executor returns `EDIT_TOOLS_UNAVAILABLE`:
 3. Do NOT propose generating patch dumps, diffs, or full file contents unless the user explicitly asks for that fallback.
 4. After editing is enabled, re-delegate the same task with the same file scope.
 
+#### "Agent completed with no output" Handling (Mandatory)
+
+If any delegated agent completes with no natural-language output (e.g., the UI shows "Agent completed with no output"):
+
+1. Treat it as a failed run (platform flake / timeout / step-limit), even if tool actions (reads/edits) occurred.
+2. Re-run the same delegation once with an explicit reminder to produce the required output contract.
+3. If it happens twice:
+   - switch to a Background handoff session (preferred), or
+   - fall back to a different capable agent (e.g., Designer -> CoderSr for UI-only edits), keeping the same scope.
+4. Report the retry and the chosen fallback to the user; do not silently proceed.
+
 ### Terminal Delegation Rule (Coders/Debugger Only)
 
 Goal: Orchestrator should never ask the user to run commands unless tool access is impossible.
