@@ -67,6 +67,7 @@ If analysis requires running commands (tests/lint/typecheck/audit), assign it to
    - `Memory Update: SKIP` when the task is mechanical/trivial and unlikely to add durable knowledge.
 
 Hard rule: if the user request is onboarding / project familiarization (e.g., "project overview", "analyze the repo/architecture"), set `Memory Update: REQUIRED` even if no code changes are planned.
+For onboarding requests, the expected durable memory artifact is an `Onboarding Snapshot` in `.agent-memory/project_decisions.md`.
 
 ## Multi-Hive Decision Rule (Mandatory)
 

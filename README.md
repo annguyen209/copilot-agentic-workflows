@@ -21,6 +21,7 @@ Based on:
 - https://github.com/simkeyur/vscode-agents
 - https://github.com/github/awesome-copilot
 - https://github.com/AlexGladkov/claude-code-agents
+- https://github.com/mrvladd-d/memobank
 
 Inspired by:
 
