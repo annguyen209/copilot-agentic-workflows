@@ -33,6 +33,7 @@ This skill defines the rules for interacting with the `.agent-memory/` directory
 - Temporary execution notes, brainstorm pads, command scratchpads, and transient reports do NOT belong in `.agent-memory/`.
 - Put transient state in runtime files such as `/.tmp/`, session memory, task-local notes, or other execution artifacts.
 - If a detail is only useful for the current run, keep it out of durable memory.
+- Planning artifacts such as draft epics, tentative feature breakdowns, and plan deltas stay in session memory unless they harden into durable operating rules, architecture decisions, or recurring constraints.
 
 ---
 

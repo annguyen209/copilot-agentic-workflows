@@ -51,7 +51,8 @@ Return concise findings that are immediately useful to the parent agent:
 
 1. clickable absolute file paths
 2. specific functions, types, patterns, or commands worth reusing
-3. blockers, ambiguities, and risks
-4. direct answer to the delegated question
+3. likely owners, subsystem boundaries, or candidate epics when the parent agent is planning larger work
+4. blockers, ambiguities, and risks
+5. direct answer to the delegated question
 
 Do not drift into implementation unless the parent agent explicitly asked for implementation guidance.
