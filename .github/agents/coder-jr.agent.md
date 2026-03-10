@@ -1,13 +1,15 @@
 ---
 name: CoderJr
-description: Writes code following mandatory coding principles.
+description: Writes code for small, low-risk changes and straightforward fixes.
 model: GPT-5 mini (copilot)
+target: vscode
+user-invokable: false
+disable-model-invocation: true
 tools:
   [
     "vscode",
     "execute",
     "read",
-    "agent",
     "context7/*",
     "github",
     "edit",
@@ -16,6 +18,7 @@ tools:
     "todo",
     "sequential-thinking/*",
   ]
+agents: []
 ---
 
 ALWAYS use #context7 MCP Server to read relevant documentation. Do this every time you are working with a language, framework, library etc. Never assume that you know the answer as these things change frequently. Your training date is in the past so your knowledge is likely out of date, even if it is a technology you are familiar with.

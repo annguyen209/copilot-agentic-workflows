@@ -2,6 +2,9 @@
 name: Debugger
 description: Systematically reproduce, diagnose, and fix concrete bugs in existing code.
 model: GPT-5.3-Codex (copilot)
+target: vscode
+user-invokable: false
+disable-model-invocation: true
 tools:
   [
     read/readFile,
@@ -12,6 +15,7 @@ tools:
     edit/editFiles,
     edit/createFile,
   ]
+agents: []
 ---
 
 You are a debugging engineer.

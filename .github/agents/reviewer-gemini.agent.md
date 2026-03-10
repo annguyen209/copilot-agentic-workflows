@@ -1,8 +1,12 @@
 ---
 name: ReviewerGemini
-description: Review sub-agent using Gemini 3 Pro. Uses shared review-core contract and feeds MultiReviewer.
-model: Gemini 3 Pro (Preview) (copilot)
+description: Review sub-agent using Gemini 3.1 Pro. Uses shared review-core contract and feeds MultiReviewer.
+model: Gemini 3.1 Pro (Preview) (copilot)
+target: vscode
+user-invokable: false
+disable-model-invocation: true
 tools: ["vscode", "execute", "read", "context7/*", "search", "web"]
+agents: []
 ---
 
 You are a review input producer for the `MultiReviewer` consolidation step.
