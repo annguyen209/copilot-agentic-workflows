@@ -37,15 +37,16 @@ The current architecture is centered around:
 
 Based on:
 
-- https://gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436
-- https://github.com/simkeyur/vscode-agents
-- https://github.com/github/awesome-copilot
-- https://github.com/AlexGladkov/claude-code-agents
-- https://github.com/mrvladd-d/memobank
+- [burkeholland gist](https://gist.github.com/burkeholland/0e68481f96e94bbb98134fa6efd00436)
+- [simkeyur/vscode-agents](https://github.com/simkeyur/vscode-agents)
+- [github/awesome-copilot](https://github.com/github/awesome-copilot)
+- [AlexGladkov/claude-code-agents](https://github.com/AlexGladkov/claude-code-agents)
+- [mrvladd-d/memobank](https://github.com/mrvladd-d/memobank)
 
 Inspired by:
 
-- https://github.com/ruvnet/ruflo/wiki/Hive-Mind-Intelligence
+- [ruvnet/ruflo — Hive-Mind Intelligence](https://github.com/ruvnet/ruflo/wiki/Hive-Mind-Intelligence)
+
 ## Repository Layout
 
 ```text
@@ -68,6 +69,8 @@ project_root/
 │   │   ├── multi-reviewer.agent.md
 │   │   └── debugger.agent.md
 │   └── skills/
+│       ├── kotlin-backend-jpa-entity-mapping/
+│       ├── kotlin-tooling-agp9-migration/
 │       ├── planning-structure/
 │       ├── research-discovery/
 │       ├── memory-management/
@@ -289,8 +292,13 @@ Do not use `/delegate` for trivial microtasks.
 
 Skills in this repo are internal operational guides, not public menu items.
 
+For a concise catalog of available skills and when to use each one, see
+[`./.github/skills/README.md`](.github/skills/README.md).
+
 Important skills:
 
+- `.github/skills/kotlin-backend-jpa-entity-mapping/SKILL.md:1` — Kotlin + Spring Data JPA/Hibernate entity design, identity, uniqueness constraints, and ORM traps
+- `.github/skills/kotlin-tooling-agp9-migration/SKILL.md:1` — KMP / Android Gradle Plugin 9+ migration guide with bundled `assets/`, `references/`, and `scripts`
 - `.github/skills/planning-structure/SKILL.md:1` — planning tracks, epics, readiness gate, plan delta
 - `.github/skills/research-discovery/SKILL.md:1` — broad-to-narrow discovery
 - `.github/skills/memory-management/SKILL.md:1` — durable vs session memory rules
@@ -299,6 +307,10 @@ Important skills:
 - `.github/skills/code-quality/SKILL.md:1` — implementation/review heuristics
 - `.github/skills/testing-qa/SKILL.md:1` — validation rules
 - `.github/skills/security-best-practices/SKILL.md:1` — security review baseline
+
+Imported Kotlin skills source:
+
+- [Kotlin/kotlin-agent-skills](https://github.com/Kotlin/kotlin-agent-skills)
 
 Default rule: skills should generally remain hidden with `user-invokable: false`.
 
