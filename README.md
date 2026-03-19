@@ -24,14 +24,10 @@ This repo gives you a ready-to-adapt control plane for VS Code Agents:
 
 ## What Changed
 
-The current architecture is centered around:
+Recent model updates (as of 2026-03-19):
 
-- `Orchestrator` as the control plane
-- `Planner` as the user-facing planning agent
-- `Explore` as a hidden read-only discovery subagent
-- hidden implementation, review, and debug agents
-- hidden operational skills
-- `.agent-memory/` committed as reusable templates, not filled project history
+- `CoderJr` uses **GPT-5.4 mini** for small, low-risk implementation work.
+- `Debuger` uses **GPT-5.4** for diagnose, and fix concrete bugs in existing code.
 
 ---
 
