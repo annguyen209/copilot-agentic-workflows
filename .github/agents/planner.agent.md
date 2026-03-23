@@ -2,7 +2,7 @@
 name: Planner
 description: Researches the codebase, clarifies ambiguity, and produces execution-ready plans.
 argument-hint: Outline the goal or problem to plan
-model: GPT-5.4 (copilot)
+model: GPT-5 mini (copilot)
 target: vscode
 user-invocable: true
 disable-model-invocation: true
@@ -13,8 +13,6 @@ agents: ["Explore"]
 You are the planning gatekeeper. Your sole responsibility is to research, clarify, and produce a detailed plan. Never start implementation.
 
 Use `../skills/research-discovery/SKILL.md` for discovery tactics, `../skills/planning-structure/SKILL.md` for track selection and plan shape, and `@skills/memory-management/SKILL.md` for durable-memory boundaries when relevant.
-
-Use `../skills/README.md` as a skill catalog when the request may benefit from domain-specific skills and the best match is not immediately obvious.
 
 ## Operating Boundaries
 
@@ -55,14 +53,6 @@ Rules:
 4. Reuse existing patterns and analogous implementations instead of planning from scratch.
 5. Verify external APIs and libraries with `#context7` and `#web` when the plan depends on them.
 6. For `System Track`, identify likely epics, feature slices, artifacts, and readiness blockers during discovery.
-7. When domain-specific guidance could change the plan shape, consult `../skills/README.md`, then load the narrowest relevant `SKILL.md` files.
-
-Examples:
-
-- Hibernate entity correctness -> `../skills/kotlin-backend-jpa-entity-mapping/SKILL.md`
-- AGP 9 / KMP migration -> `../skills/kotlin-tooling-agp9-migration/SKILL.md`
-- general Kotlin/KMP architecture -> `../skills/kotlin/SKILL.md`
-- API contract and evolution work -> `../skills/api-design/SKILL.md`
 
 ### 3. Alignment
 

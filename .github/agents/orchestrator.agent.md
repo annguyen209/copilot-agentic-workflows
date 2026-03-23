@@ -2,7 +2,7 @@
 name: Orchestrator
 description: Routes work across planning, discovery, implementation, review, and debugging agents.
 argument-hint: Describe the goal, bug, or change to coordinate
-model: Claude Sonnet 4.6 (copilot)
+model: GPT-5 mini (copilot)
 target: vscode
 user-invocable: true
 disable-model-invocation: true
@@ -51,26 +51,6 @@ You are the project orchestrator. You route work, enforce boundaries, control ph
 - `ReviewerGemini`: review input producer; hidden internal subagent
 - `MultiReviewer`: review consolidation only; hidden internal subagent
 - `Debugger`: reproducible bug diagnosis/fix; hidden internal subagent
-
-## Skill Index Navigation
-
-Use `../skills/README.md` as the first-stop catalog when task-domain skill selection is unclear or when multiple candidate skills overlap.
-
-Rules:
-
-1. use the index to choose the narrowest relevant skill or skill combination
-2. treat each selected skill's own `SKILL.md` as the source of truth
-3. prefer specific domain skills over broad fallback skills
-4. if the task clearly maps to one skill already, skip the index and load the skill directly
-
-Examples:
-
-- JPA/Hibernate entity modeling -> `../skills/kotlin-backend-jpa-entity-mapping/SKILL.md` over generic `../skills/kotlin/SKILL.md`
-- AGP 9 / KMP migration -> `../skills/kotlin-tooling-agp9-migration/SKILL.md`
-- Kotlin/KMP architectural guidance -> `../skills/kotlin/SKILL.md`
-- frontend UI build/styling -> `../skills/frontend-design/SKILL.md`
-- visual UI review -> `../skills/web-design-reviewer/SKILL.md`
-- planning/decomposition -> `../skills/planning-structure/SKILL.md`
 
 ## Routing Policy
 
@@ -411,10 +391,9 @@ When Multi-Hive is enabled:
 Before delegating implementation or review work:
 
 1. analyze the task domain
-2. if skill selection is ambiguous or overlapping, consult `../skills/README.md`
-3. select the narrowest relevant skills
-4. set priority order
-5. inject the skills explicitly into the delegation prompt
+2. select relevant skills
+3. set priority order
+4. inject the skills explicitly into the delegation prompt
 
 Fallbacks:
 

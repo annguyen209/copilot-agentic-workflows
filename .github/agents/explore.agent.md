@@ -6,10 +6,9 @@ model:
   [
     "Claude Haiku 4.5 (copilot)",
     "Gemini 3 Flash (Preview) (copilot)",
-    "Auto (copilot)",
   ]
 target: vscode
-user-invokable: false
+user-invocable: false
 disable-model-invocation: true
 tools: ["search", "read", "web", "vscode/memory"]
 agents: []

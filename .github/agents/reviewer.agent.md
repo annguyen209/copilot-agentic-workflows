@@ -1,9 +1,9 @@
 ---
 name: Reviewer
-description: Primary review agent using Claude Sonnet 4.6. Uses the shared review-core contract.
-model: Claude Sonnet 4.6 (copilot)
+description: Primary review agent using Claude Haiku 4.5. Uses the shared review-core contract.
+model: Claude Haiku 4.5 (copilot)
 target: vscode
-user-invokable: false
+user-invocable: false
 disable-model-invocation: true
 tools: ["vscode", "execute", "read", "context7/*", "search", "web"]
 agents: []
