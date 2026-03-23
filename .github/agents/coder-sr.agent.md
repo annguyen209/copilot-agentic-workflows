@@ -11,7 +11,7 @@ tools:
     "execute",
     "read",
     "context7/*",
-    "github",
+    "github/*",
     "edit",
     "search",
     "web",
