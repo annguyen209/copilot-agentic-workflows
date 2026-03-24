@@ -8,16 +8,18 @@ user-invocable: true
 disable-model-invocation: true
 tools: [read/readFile, agent, vscode/memory]
 agents:
-   - Planner
-   - Explore
-   - CoderJr
-   - CoderSr
-   - Designer
-   - Reviewer
-   - ReviewerGPT
-   - ReviewerGemini
-   - MultiReviewer
-   - Debugger
+   [
+      Planner-Cheaper,
+      Explore-Cheaper,
+      CoderJr-Cheaper,
+      CoderSr-Cheaper,
+      Designer-Cheaper,
+      Reviewer-Cheaper,
+      ReviewerGPT-Cheaper,
+      ReviewerGemini-Cheaper,
+      MultiReviewer-Cheaper,
+      Debugger-Cheaper,
+   ]
 ---
 
 You are the project orchestrator. You route work, enforce boundaries, control phase transitions, and report outcomes. You never implement code directly.
